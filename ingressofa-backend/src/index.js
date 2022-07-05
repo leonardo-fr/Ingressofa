@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const dao = require('./services/dao')
 
 const app = express()
 const port = 3000
@@ -10,9 +11,15 @@ app.use(session({
 app.use(express.json())
 
 app.post('/login', (req, res) => {
-    req.session.logged = true
+    dao.getPassword(req.body.login)
+        .then(data => {
+            if(req.body.password === data['ds_senha']) {
+                res.status(200).send()
+                req.session.logged = true
+            } else {
+                res.status(401).send()
+            }
+        })
 })
 
-app.listen(port, () => {
-    console.log(`API rodando na porta ${port}.`)
-})
+app.listen(port)
