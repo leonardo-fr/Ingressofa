@@ -1,5 +1,6 @@
 const express = require('express')
 const session = require('express-session')
+const bcrypt = require('bcrypt')
 const dao = require('./services/dao')
 
 const app = express()
@@ -10,16 +11,17 @@ app.use(session({
 }))
 app.use(express.json())
 
-app.post('/login', (req, res) => {
-    dao.getPassword(req.body.login)
-        .then(data => {
-            if(req.body.password === data['ds_senha']) {
-                res.status(200).send()
-                req.session.logged = true
-            } else {
-                res.status(401).send()
-            }
-        })
+app.post('/login', async (req, res) => {
+    const password = await dao.getPassword(req.body.login)
+
+    bcrypt.compare(req.body.password, password['ds_senha'], (err, match) => {
+        if (match) {
+            req.session.user = req.body.login
+            res.status(200).send()
+        } else {
+            res.status(401).send()
+        }
+    })
 })
 
 app.listen(port)
