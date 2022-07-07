@@ -6,7 +6,7 @@ module.exports = {
         [user['name'], user['cpf'], user['gender'], user['email'], user['phoneNumber'], user['email'], user['password'], user['birthdate'], user['type']]
     ),
 
-    getUserByLogin: login => db.one(
+    getUserByLogin: login => db.oneOrNone(
         'SELECT * FROM tb_usuario WHERE ds_login = $1',
         [login]
     )

@@ -1,13 +1,13 @@
 const bcrypt = require('bcrypt')
-const authDao = require('./../dao/authDao')
+const userDao = require('./../dao/userDao')
 
 module.exports = {
     login: async (req, res) => {
-        const password = await authDao.getPassword(req.body.login)
+        const user = await userDao.getUserByLogin(req.body.login)
     
-        bcrypt.compare(req.body.password, password['ds_senha'], (err, match) => {
+        bcrypt.compare(req.body.password, user['ds_senha'], (err, match) => {
             if (match) {
-                req.session.user = req.body.login
+                req.session.user = user
                 res.status(200).send()
             } else {
                 res.status(401).send()
