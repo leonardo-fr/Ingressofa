@@ -1,5 +1,4 @@
-const pgp = require('pg-promise')()
-const db = pgp('postgres://postgres:postgres@localhost:5432/ingressofa')
+const db = require('./connection')
 
 module.exports = {
     getPassword: login => db.one(
