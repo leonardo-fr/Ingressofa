@@ -4,6 +4,7 @@ const session = require('express-session')
 const authController = require('./controller/authController')
 const eventController = require('./controller/eventController')
 const localController = require('./controller/localController')
+const sessionController = require('./controller/sessionController')
 const userController = require('./controller/userController')
 
 const { isAuthenticated } = require('./middleware/authMiddleware')
@@ -24,6 +25,8 @@ app.post('/login', authController.login)
 app.post('/event', isAuthenticated, isAdmin, eventController.addEvent)
 
 app.post('/local', isAuthenticated, isAdmin, localController.addLocal)
+
+app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
 
 app.post('/user', userController.addUser)
 
