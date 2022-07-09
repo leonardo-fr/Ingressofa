@@ -2,12 +2,12 @@ const db = require('./connection')
 
 module.exports = {
     addUser: user => db.query(
-        'INSERT INTO tb_usuario (ds_nome, ds_cpf, ds_sexo, ds_email, ds_telefone, ds_login, ds_senha, dt_nascimento, id_tipo_usuario) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
-        [user['name'], user['cpf'], user['gender'], user['email'], user['phoneNumber'], user['email'], user['password'], user['birthdate'], user['type']]
+        'INSERT INTO "User" ("Name", "CPF", "Gender", "Email", "PhoneNumber", "Login", "Password", "Birthdate", "Type") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+        [user.name, user.cpf, user.gender, user.email, user.phoneNumber, user.email, user.password, user.birthdate, user.type]
     ),
 
     getUserByLogin: login => db.oneOrNone(
-        'SELECT * FROM tb_usuario WHERE ds_login = $1',
+        'SELECT * FROM "User" WHERE "Login" = $1',
         [login]
     )
 }
