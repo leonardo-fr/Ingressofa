@@ -31,6 +31,8 @@ module.exports = {
 
         sale.tickets = mapTicketsPrice(sale.tickets, session['Price'])
         sale.totalValue = getTotalValue(sale.tickets)
+        sale.date = new Date()
+        sale.protocol = sale.date.getTime() % 1000000
 
         const id = await saleDao.addSale(sale)
 
