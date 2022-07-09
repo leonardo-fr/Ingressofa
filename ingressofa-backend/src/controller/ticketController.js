@@ -2,12 +2,18 @@ const saleDao = require('./../dao/saleDao')
 const sessionDao = require('./../dao/sessionDao')
 const ticketDao = require('./../dao/ticketDao')
 
-const mapTicketsPrice = (tickets, price) => tickets.map(ticket => {
+const mapTicketsPrice = (tickets, price, saleType) => tickets.map(ticket => {
     ticket.price = price
 
     if (ticket.type === 2) {
         ticket.price /= 2
     }
+
+    if (saleType === 2) {
+        ticket.price *= 1.05
+    }
+
+    ticket.price = Math.round(ticket.price * 100) / 100
 
     return ticket
 })
@@ -29,7 +35,7 @@ module.exports = {
         const sale = req.body
         const session = await sessionDao.getSessionById(sale.session)
 
-        sale.tickets = mapTicketsPrice(sale.tickets, session['Price'])
+        sale.tickets = mapTicketsPrice(sale.tickets, session['Price'], sale.type)
         sale.totalValue = getTotalValue(sale.tickets)
         sale.date = new Date()
         sale.protocol = sale.date.getTime() % 1000000
