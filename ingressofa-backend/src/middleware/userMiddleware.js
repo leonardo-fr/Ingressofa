@@ -1,6 +1,6 @@
 module.exports = {
     isAdmin: (req, res, next) => {
-        if (req.session.user['id_tipo_usuario'] === 3) {
+        if (req.session.user['type'] === 3) {
             next()
         } else {
             res.status(401).send()
