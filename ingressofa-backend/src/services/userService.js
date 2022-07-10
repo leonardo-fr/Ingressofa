@@ -4,10 +4,10 @@ const userDao = require('./../database/userDao')
 module.exports = {
     addUser: async req => {
         req.login = req.email
-        const userExists = await userDao.getUserByLogin(req.login)
+        const user = await userDao.getUserByLoginOrCPF(req)
 
-        if (userExists) {
-            throw 'Usuário já existe.'
+        if (user) {
+            throw 'Já existe um usuário cadastrado com esses dados.'
         }
 
         const saltRounds = 10
