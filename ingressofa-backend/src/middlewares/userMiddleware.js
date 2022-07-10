@@ -1,9 +1,11 @@
 module.exports = {
     isAdmin: (req, res, next) => {
-        if (req.session.user['type'] === 3) {
+        if (req.session.user['Type'] === 3) {
             next()
         } else {
-            res.status(401).send()
+            res.status(403).send({
+                error: 'Usuário sem permissão.'
+            })
         }
     }
 }
