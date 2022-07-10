@@ -4,6 +4,12 @@ const sessionDao = require('./../database/sessionDao')
 const ticketDao = require('./../database/ticketDao')
 const userDao = require('./../database/userDao')
 
+const isSessionExpired = sessionDate => {
+    const currentDate = new Date()
+    
+    return currentDate.getTime() > sessionDate.getTime()
+}
+
 const isTicketsValid = (saleTickets, dbTickets, capacity) => {
     for (let i in saleTickets) {
         if (saleTickets[i].seat < 1 || saleTickets[i].seat > capacity) {
@@ -75,6 +81,8 @@ module.exports = {
 
         if (!session) {
             throw 'A sessão informada não existe.'
+        } else if (isSessionExpired(session['Date'])) {
+            throw 'A sessão já aconteceu.'
         }
 
         const user = await userDao.getUserById(req.user)
