@@ -1,6 +1,29 @@
+const localDao = require('./../database/localDao')
 const saleDao = require('./../database/saleDao')
 const sessionDao = require('./../database/sessionDao')
 const ticketDao = require('./../database/ticketDao')
+
+const isTicketsValid = (saleTickets, dbTickets, capacity) => {
+    for (let i in saleTickets) {
+        if (saleTickets[i].seat < 1 || saleTickets[i].seat > capacity) {
+            return false
+        }
+
+        for (let j in saleTickets) {
+            if (i !== j && saleTickets[i].seat === saleTickets[j].seat) {
+                return false
+            }
+        }
+
+        for (let dbt of dbTickets) {
+            if (saleTickets[i].seat === dbt['Seat']) {
+                return false
+            }
+        }
+    }
+
+    return true
+}
 
 const mapTicketsPrice = (tickets, price, saleType) => tickets.map(ticket => {
     ticket.price = price
@@ -36,6 +59,13 @@ module.exports = {
 
         if (!session) {
             throw 'A sessão informada não existe.'
+        }
+
+        const tickets = await ticketDao.getTicketsBySession(req.session)
+        const local = await localDao.getLocalById(session['IdLocal'])
+
+        if (!isTicketsValid(req.tickets, tickets, local['Capacity'])) {
+            throw 'Os assentos são inválidos.'
         }
 
         req.tickets = mapTicketsPrice(req.tickets, session['Price'], req.type)
