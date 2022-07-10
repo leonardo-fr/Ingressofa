@@ -26,6 +26,7 @@ app.post('/login', authController.login)
 app.post('/event', isAuthenticated, isAdmin, eventController.addEvent)
 
 app.post('/local', isAuthenticated, isAdmin, localController.addLocal)
+app.get('/local', isAuthenticated, localController.getLocals)
 
 app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
 app.get('/session', isAuthenticated, sessionController.getSessions)

@@ -9,5 +9,9 @@ module.exports = {
     getLocalById: id => db.oneOrNone(
         'SELECT * FROM "Local" WHERE "Id" = $1',
         [id]
+    ),
+
+    getLocals: () => db.manyOrNone(
+        'SELECT * FROM "Local"'
     )
 }

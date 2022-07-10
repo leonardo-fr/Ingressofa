@@ -7,5 +7,13 @@ module.exports = {
         } catch (error) {
             throw 'O local contém informações inválidas.'
         }
+    },
+    
+    getLocals: async () => {
+        try {
+            return localDao.getLocals()
+        } catch (error) {
+            throw 'Ocorreu um erro inesperado ao buscar os locais.'
+        }
     }
 }
