@@ -1,8 +1,13 @@
-const eventDao = require('./../database/eventDao')
+const eventService = require('./../services/eventService')
 
 module.exports = {
     addEvent: (req, res) => {
-        eventDao.addEvent(req.body)
-        res.status(200).send()
+        eventService.addEvent(req.body)
+            .then(() => 
+                res.status(201).send()
+            )
+            .catch(error =>
+                res.status(400).send({error})
+            )
     }
 }
