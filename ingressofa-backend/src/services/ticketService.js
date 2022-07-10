@@ -108,5 +108,13 @@ module.exports = {
         }
 
         return req
+    },
+
+    getTicketsByProtocolAndCPF: async req => {
+        try {
+            return ticketDao.getTicketsByProtocolAndCPF(req)
+        } catch (error) {
+            throw 'A busca contém informações inválidas.'
+        }
     }
 }

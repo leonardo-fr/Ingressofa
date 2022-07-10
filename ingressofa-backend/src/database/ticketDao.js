@@ -9,5 +9,10 @@ module.exports = {
     getTicketsBySession: session => db.manyOrNone(
         'SELECT * FROM "Ticket" WHERE "IdSession" = $1',
         [session]
+    ),
+
+    getTicketsByProtocolAndCPF: req => db.manyOrNone(
+        'SELECT tc."Id", tc."Price", tc."IdSession", tc."IdSale", tc."Type", tc."Seat" FROM "Sale" s, "User" u, "Ticket" tc WHERE s."IdUser" = u."Id" AND s."Id" = tc."IdSale" AND u."CPF" = $1 AND s."Protocol" = $2',
+        [req.cpf, req.protocol]
     )
 }
