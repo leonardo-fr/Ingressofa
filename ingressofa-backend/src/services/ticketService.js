@@ -94,5 +94,13 @@ module.exports = {
         } catch (error) {
             throw 'Os ingressos contém informações inválidas.'
         }
+
+        req.userName = user['Name']
+        req.userCPF = user['CPF']
+        req.userEmail = user['Email']
+        req.userPhone = user['PhoneNumber']
+        req.userBirthdate = user['Birthdate']
+
+        return req
     }
 }
