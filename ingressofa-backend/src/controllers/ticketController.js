@@ -14,7 +14,7 @@ module.exports = {
     getTicketsByProtocolAndCPF: (req, res) => {
         ticketService.getTicketsByProtocolAndCPF(req.body)
             .then(tickets =>
-                res.status(201).send(tickets)
+                res.status(200).send(tickets)
             )
             .catch(error =>
                 res.status(400).send({ error })

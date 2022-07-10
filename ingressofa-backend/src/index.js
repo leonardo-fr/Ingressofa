@@ -32,8 +32,8 @@ app.get('/local', isAuthenticated, localController.getLocals)
 app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
 app.get('/session', isAuthenticated, sessionController.getSessions)
 
-app.post('/ticket', isAuthenticated, ticketController.buyTickets)
-app.get('/ticket', isAuthenticated, ticketController.getTicketsByProtocolAndCPF)
+app.post('/ticket/buy', isAuthenticated, ticketController.buyTickets)
+app.post('/ticket/get', isAuthenticated, ticketController.getTicketsByProtocolAndCPF)
 
 app.post('/user', userController.addUser)
 
