@@ -13,5 +13,10 @@ module.exports = {
 
     getSessions: () => db.manyOrNone(
         'SELECT s."Id", s."Date", s."Price", e."Name" "Event", e."Type", l."Name" "Local", l."Capacity" FROM "Session" s, "Event" e, "Local" l WHERE s."IdLocal" = l."Id" AND s."IdEvent" = e."Id"'
+    ),
+
+    getSessionDataById: id => db.oneOrNone(
+        'SELECT s."Id", s."Date", e."Name" "Event", l."Name" "Local" FROM "Session" s, "Event" e, "Local" l WHERE s."IdLocal" = l."Id" AND s."IdEvent" = e."Id" AND s."Id" = $1',
+        [id]
     )
 }
