@@ -3,7 +3,9 @@ module.exports = {
         if (req.session.user) {
             next()
         } else {
-            res.status(401).send()
+            res.status(401).send({
+                error: 'Usuário não autenticado.'
+            })
         }
     }
 }
