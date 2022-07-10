@@ -8,6 +8,7 @@ const sessionController = require('./controllers/sessionController')
 const ticketController = require('./controllers/ticketController')
 const userController = require('./controllers/userController')
 
+const { isIntegerId } = require('./middlewares/apiMiddleware')
 const { isAuthenticated } = require('./middlewares/authMiddleware')
 const { isAdmin } = require('./middlewares/userMiddleware')
 
@@ -31,6 +32,7 @@ app.get('/local', isAuthenticated, localController.getLocals)
 
 app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
 app.get('/session', isAuthenticated, sessionController.getSessions)
+app.get('/session/:id', isAuthenticated, isIntegerId, sessionController.getSessionReport)
 
 app.post('/ticket/buy', isAuthenticated, ticketController.buyTickets)
 app.post('/ticket/get', isAuthenticated, ticketController.getTicketsByProtocolAndCPF)
