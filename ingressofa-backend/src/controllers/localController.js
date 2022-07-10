@@ -1,4 +1,4 @@
-const localDao = require('./../dao/localDao')
+const localDao = require('./../database/localDao')
 
 module.exports = {
     addLocal: (req, res) => {

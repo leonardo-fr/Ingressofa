@@ -1,15 +1,15 @@
 const express = require('express')
 const session = require('express-session')
 
-const authController = require('./controller/authController')
-const eventController = require('./controller/eventController')
-const localController = require('./controller/localController')
-const sessionController = require('./controller/sessionController')
-const ticketController = require('./controller/ticketController')
-const userController = require('./controller/userController')
+const authController = require('./controllers/authController')
+const eventController = require('./controllers/eventController')
+const localController = require('./controllers/localController')
+const sessionController = require('./controllers/sessionController')
+const ticketController = require('./controllers/ticketController')
+const userController = require('./controllers/userController')
 
-const { isAuthenticated } = require('./middleware/authMiddleware')
-const { isAdmin } = require('./middleware/userMiddleware')
+const { isAuthenticated } = require('./middlewares/authMiddleware')
+const { isAdmin } = require('./middlewares/userMiddleware')
 
 const app = express()
 const port = 3000

@@ -1,4 +1,4 @@
-const sessionDao = require('./../dao/sessionDao')
+const sessionDao = require('./../database/sessionDao')
 
 module.exports = {
     addSession: (req, res) => {

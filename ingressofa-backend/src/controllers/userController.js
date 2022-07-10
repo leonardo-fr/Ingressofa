@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const userDao = require('./../dao/userDao')
+const userDao = require('./../database/userDao')
 
 module.exports = {
     addUser: async (req, res) => {

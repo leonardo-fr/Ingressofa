@@ -1,6 +1,6 @@
-const saleDao = require('./../dao/saleDao')
-const sessionDao = require('./../dao/sessionDao')
-const ticketDao = require('./../dao/ticketDao')
+const saleDao = require('./../database/saleDao')
+const sessionDao = require('./../database/sessionDao')
+const ticketDao = require('./../database/ticketDao')
 
 const mapTicketsPrice = (tickets, price, saleType) => tickets.map(ticket => {
     ticket.price = price

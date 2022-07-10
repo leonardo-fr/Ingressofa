@@ -1,4 +1,4 @@
-const eventDao = require('./../dao/eventDao')
+const eventDao = require('./../database/eventDao')
 
 module.exports = {
     addEvent: (req, res) => {
