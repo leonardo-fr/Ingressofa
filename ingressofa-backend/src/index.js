@@ -28,6 +28,7 @@ app.post('/event', isAuthenticated, isAdmin, eventController.addEvent)
 app.post('/local', isAuthenticated, isAdmin, localController.addLocal)
 
 app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
+app.get('/session', isAuthenticated, sessionController.getSessions)
 
 app.post('/ticket', isAuthenticated, ticketController.buyTickets)
 app.get('/ticket', isAuthenticated, ticketController.getTicketsByProtocolAndCPF)

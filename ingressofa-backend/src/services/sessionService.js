@@ -7,5 +7,13 @@ module.exports = {
         } catch (error) {
             throw 'A sessão contém informações inválidas.'
         }
+    },
+
+    getSessions: async () => {
+        try {
+            return sessionDao.getSessions()
+        } catch (error) {
+            throw 'Ocorreu um erro inesperado ao buscar as sessões.'
+        }
     }
 }
