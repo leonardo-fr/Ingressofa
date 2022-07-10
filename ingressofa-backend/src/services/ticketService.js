@@ -47,6 +47,21 @@ const getTotalValue = tickets => tickets.reduce(
     0
 )
 
+const setSaleData = (sale, session, user) => {
+    sale.tickets = mapTicketsPrice(sale.tickets, session['Price'], sale.type)
+    sale.totalValue = getTotalValue(sale.tickets)
+    sale.date = new Date()
+    sale.protocol = sale.date.getTime() % 1000000
+
+    sale.userName = user['Name']
+    sale.userCPF = user['CPF']
+    sale.userEmail = user['Email']
+    sale.userPhone = user['PhoneNumber']
+    sale.userBirthdate = user['Birthdate']
+
+    return sale
+}
+
 const mapTicketsData = (tickets, sale) => tickets.map(ticket => {
     ticket.session = sale.session
     ticket.sale = sale.id
@@ -75,10 +90,7 @@ module.exports = {
             throw 'Os assentos são inválidos.'
         }
 
-        req.tickets = mapTicketsPrice(req.tickets, session['Price'], req.type)
-        req.totalValue = getTotalValue(req.tickets)
-        req.date = new Date()
-        req.protocol = req.date.getTime() % 1000000
+        req = setSaleData(req, session, user)
 
         try {
             const id = await saleDao.addSale(req)
@@ -94,12 +106,6 @@ module.exports = {
         } catch (error) {
             throw 'Os ingressos contém informações inválidas.'
         }
-
-        req.userName = user['Name']
-        req.userCPF = user['CPF']
-        req.userEmail = user['Email']
-        req.userPhone = user['PhoneNumber']
-        req.userBirthdate = user['Birthdate']
 
         return req
     }
