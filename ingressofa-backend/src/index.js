@@ -29,7 +29,7 @@ app.post('/local', isAuthenticated, isAdmin, localController.addLocal)
 
 app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
 
-app.post('/ticket/buy', isAuthenticated, ticketController.buyTickets)
+app.post('/ticket', isAuthenticated, ticketController.buyTickets)
 app.get('/ticket', isAuthenticated, ticketController.getTicketsByProtocolAndCPF)
 
 app.post('/user', userController.addUser)
