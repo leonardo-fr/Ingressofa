@@ -9,5 +9,10 @@ module.exports = {
     getUserByLogin: login => db.oneOrNone(
         'SELECT * FROM "User" WHERE "Login" = $1',
         [login]
+    ),
+
+    getUserById: id => db.oneOrNone(
+        'SELECT * FROM "User" WHERE "Id" = $1',
+        [id]
     )
 }
