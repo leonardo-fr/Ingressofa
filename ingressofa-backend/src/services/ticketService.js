@@ -2,6 +2,7 @@ const localDao = require('./../database/localDao')
 const saleDao = require('./../database/saleDao')
 const sessionDao = require('./../database/sessionDao')
 const ticketDao = require('./../database/ticketDao')
+const userDao = require('./../database/userDao')
 
 const isTicketsValid = (saleTickets, dbTickets, capacity) => {
     for (let i in saleTickets) {
@@ -59,6 +60,12 @@ module.exports = {
 
         if (!session) {
             throw 'A sessão informada não existe.'
+        }
+
+        const user = await userDao.getUserById(req.user)
+
+        if (!user) {
+            throw 'O usuário informado não existe.'
         }
 
         const tickets = await ticketDao.getTicketsBySession(req.session)
