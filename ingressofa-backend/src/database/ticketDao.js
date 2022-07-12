@@ -19,5 +19,10 @@ module.exports = {
     getTicketsStatsBySession: session => db.oneOrNone(
         'SELECT SUM("Price") "TotalValue", COUNT("Id") "Tickets", COUNT(CASE "Type" when 1 then 1 else null end) "FullPrice", COUNT(CASE "Type" when 2 then 1 else null end) "HalfPrice" FROM "Ticket" WHERE "IdSession" = $1',
         [session]
+    ),
+
+    getTicketsStatsBySessions: sessions => db.oneOrNone(
+        'SELECT SUM("Price") "TotalValue", COUNT("Id") "Tickets", COUNT(CASE "Type" when 1 then 1 else null end) "FullPrice", COUNT(CASE "Type" when 2 then 1 else null end) "HalfPrice" FROM "Ticket" WHERE "IdSession" IN ($1:list)',
+        [sessions]
     )
 }
