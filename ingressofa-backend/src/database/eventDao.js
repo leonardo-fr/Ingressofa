@@ -8,5 +8,10 @@ module.exports = {
     
     getEvents: () => db.manyOrNone(
         'SELECT * FROM "Event"'
+    ),
+    
+    getEventById: id => db.oneOrNone(
+        'SELECT * FROM "Event" WHERE "Id" = $1',
+        [id]
     )
 }
