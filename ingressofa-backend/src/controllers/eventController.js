@@ -19,5 +19,15 @@ module.exports = {
             .catch(error =>
                 res.status(500).send({ error })
             )
+    },
+    
+    getEventReport: (req, res) => {
+        eventService.getEventReport(req.params.id)
+            .then(report =>
+                res.status(200).send(report)
+            )
+            .catch(error =>
+                res.status(400).send({ error })
+            )
     }
 }
