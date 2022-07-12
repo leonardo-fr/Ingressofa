@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./style/style.css"/>
+    
+        <title> Cadeiras do cinema</title>
+    </mete>
+</head>
+
+<body>
+    <div class="filme-container">
+        <label>Selecione um filme:</label>
+        <select id="filme">
+            <option value="15"> Águas Profundas (R$.15) </option>
+            <option value="15"> Windfall (R$.15)</option>
+            <option value="22"> Assassino Sem Rastro(R$.22) </option>
+            <option value="22"> Ainda Estou Aqui(R$.22)</option>
+        </select>
+    </div>
+    <ul class="showcase">
+        <li>
+            <div class="cadeira"></div>
+            <small>livre</small>
+        </li>
+        <li>
+            <div class="cadeira_selecionada"> </div>
+                <small>selecionada</small>
+           
+        </li>
+        <li>
+            <div class="cadeira_vendida "></div>
+                <small>vendida</small>
+            
+        </li>
+    </ul>
+    <div class="container">
+        <div class="tela"> </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+        <div class="vagas">
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+            <div class="cadeira"></div>
+        </div>
+    </div>
+    <p class="text">
+        você selecionou <span id="count"></span> custou R$<span id="total">0</span>
+    </p>
+    <div class="confirma">
+        <input type="button" onclick="button()" value="confirmar compra" />
+    </div>
+    
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
