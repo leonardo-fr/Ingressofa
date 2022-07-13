@@ -22,7 +22,8 @@ app.use(session({
 }))
 app.use(express.json())
 
-app.post('/login', authController.login)
+app.post('/auth/login', authController.login)
+app.post('/auth/logout', isAuthenticated, authController.logout)
 
 app.post('/event', isAuthenticated, isAdmin, eventController.addEvent)
 app.get('/event', isAuthenticated, eventController.getEvents)

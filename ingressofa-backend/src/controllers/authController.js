@@ -10,5 +10,10 @@ module.exports = {
             .catch(error =>
                 res.status(400).send({ error })
             )
+    },
+
+    logout: (req, res) => {
+        delete req.session.user
+        res.status(200).send()
     }
 }
