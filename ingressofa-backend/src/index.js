@@ -33,6 +33,7 @@ app.get('/local', isAuthenticated, localController.getLocals)
 
 app.post('/session', isAuthenticated, isAdmin, sessionController.addSession)
 app.get('/session', isAuthenticated, sessionController.getSessions)
+app.get('/session/seats', isAuthenticated, sessionController.getSoldSeats)
 app.get('/session/:id', isAuthenticated, isIntegerId, sessionController.getSessionReport)
 
 app.post('/ticket/buy', isAuthenticated, ticketController.buyTickets)

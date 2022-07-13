@@ -29,5 +29,15 @@ module.exports = {
             .catch(error =>
                 res.status(400).send({ error })
             )
+    },
+
+    getSoldSeats: (req, res) => {
+        sessionService.getSoldSeats()
+            .then(soldSeats =>
+                res.status(200).send(soldSeats)
+            )
+            .catch(error =>
+                res.status(500).send({ error })
+            )
     }
 }
