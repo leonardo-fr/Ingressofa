@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { Navigate, useNavigate} from 'react-router-dom'
-import { Container, Grid, CircularProgress } from '@material-ui/core'
+import { Container, Grid, CircularProgress, Button } from '@material-ui/core'
 //import { LoginButton } from 'features/authentication/components/LoginButton'
 //import { AuthenticationTitle } from 'features/authentication/components/AuthenticationTitle/AuthenticationTitle'
 //import { StoreState } from 'redux/state'
@@ -45,7 +45,7 @@ export const SignIn: React.FC = () => {
   const [switchAlternateState, setSwitchAlternateState] =
     React.useState(Boolean)
   const [onChange, setOnChange] = React.useState(Boolean)
-  const [cookies, setCookie, removeCookie] = useCookies(['login-token'])
+  //const [cookies, setCookie, removeCookie] = useCookies(['login-token'])
 
   React.useEffect(() => {
     if (token ) {
@@ -56,9 +56,6 @@ export const SignIn: React.FC = () => {
     }
   }, [token, authState])
 
-  React.useEffect(() => {
-    //dispatch(signOut())
-  }, [history])
 
   const onPasswordChange = (event: any) => {
     setPasswordInput(event.target.value)
@@ -78,10 +75,9 @@ export const SignIn: React.FC = () => {
 
   const passwordIsValid =
     passwordInput.length >= 8 && passwordInput.length <= 16
-  const isValid = cookies['login-token'] && passwordIsValid;
+  //const isValid = cookies['login-token'] && passwordIsValid;
 
   return (
-    <CookiesProvider>
       <Container maxWidth="xs" className={style.container}>
         {validationToken && (
           <Alert
@@ -117,13 +113,12 @@ export const SignIn: React.FC = () => {
               />
             </Grid>
             <Grid item>
-             {/*<LoginButton disabled={!isValid} />*/}
+             {<Button disabled={false} />}
             </Grid>
         </Grid>
         ({
           <CircularProgress/>
         })
       </Container>
-    </CookiesProvider>
   )
 }

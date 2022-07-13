@@ -7,6 +7,7 @@ import { Router } from '../Router'
 import { datePickerLocale } from '../../translate'
 import { StoreProvider } from '../../redux/StoreProvider'
 import { theme } from '../../config/theme'
+import { ConfigContextProvider } from '../../config/context'
 
 export const App: React.FC = () => {
   const style = useStyle()
@@ -24,3 +25,5 @@ export const App: React.FC = () => {
     </StoreProvider>
   )
 }
+
+export default App;

@@ -1,4 +1,5 @@
 export enum AuthenticationRoutes {
+    home = '/',
     signIn = '/signin',
     signOut = '/signout',
   

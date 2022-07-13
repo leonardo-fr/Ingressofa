@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 //import { ProtectedRoute } from 'components/ProtectedRoute'
 import { AuthenticationRoutes } from '../../features/authentication/constants/routes'
 import { SignIn } from '../../features/authentication/pages/SignIn'
@@ -10,7 +10,9 @@ import { SignIn } from '../../features/authentication/pages/SignIn'
 export const Router: React.FC = () => {
   return (
     <BrowserRouter>
-        <Route path={AuthenticationRoutes.signIn} element={<SignIn/>} />
+    <Routes>
+      <Route path={AuthenticationRoutes.home} element={<SignIn/>} />
+    </Routes>
     </BrowserRouter>
   )
 }
