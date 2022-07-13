@@ -6,7 +6,7 @@ import { Container, Grid, CircularProgress, Button } from '@material-ui/core'
 //import { AuthenticationTitle } from 'features/authentication/components/AuthenticationTitle/AuthenticationTitle'
 //import { StoreState } from 'redux/state'
 //import { Loader } from 'components/Loader'
-
+import Box from '@mui/material/Box';
 //import { useMask } from 'hooks/useMask'
 //import { maskCpf } from '_utils/masks/taxPayer'
 import { useStyle } from './SignIn.style'
@@ -30,7 +30,8 @@ import { AccountRoutes } from '../../../account/constants/routes'
 import { login,  } from '../../redux/action'
 
 export const SignIn: React.FC = () => {
-  const [passwordInput, setPasswordInput] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [login, setLogin] = React.useState('')
   const authState = useSelector((state: StoreState) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -58,7 +59,11 @@ export const SignIn: React.FC = () => {
 
 
   const onPasswordChange = (event: any) => {
-    setPasswordInput(event.target.value)
+    setPassword(event.target.value)
+  }
+
+  const onLoginChange = (event: any) => {
+    setLogin(event.target.value)
   }
 
   const onSubmit = async (event: any) => {
@@ -74,11 +79,11 @@ export const SignIn: React.FC = () => {
   }
 
   const passwordIsValid =
-    passwordInput.length >= 8 && passwordInput.length <= 16
+    password.length >= 8 && password.length <= 16
   //const isValid = cookies['login-token'] && passwordIsValid;
 
   return (
-      <Container maxWidth="xs" className={style.container}>
+      <Container className={style.container}>
         {validationToken && (
           <Alert
             title="Aviso!"
@@ -88,37 +93,28 @@ export const SignIn: React.FC = () => {
         )}
         {authState.errorMessage && (
           <Alert
-            title="Erro"
+            title="Falha na autenticação"
             message={authState.errorMessage}
             severity={'error'}
           />
         )}
-        <Grid
-          container
-          direction="column"
-          component="form"
-          onSubmit={onSubmit}
-        >
-          <Grid item className={style.header}>
-          </Grid>
-          <Grid item container direction="column" spacing={3}>
-            </Grid>
-            <Grid item>
-              <TextField
-                variant="filled"
-                placeholder="Digite aqui"
-                label="Senha"
-                value={passwordInput}
-                onChange={onPasswordChange}
-              />
-            </Grid>
-            <Grid item>
-             {<Button disabled={false} />}
-            </Grid>
-        </Grid>
-        ({
-          <CircularProgress/>
-        })
+        <Container className={style.inputs}>
+          <TextField
+              variant="filled"
+              placeholder="Digite aqui"
+              label="Email"
+              value={login}
+              onChange={onLoginChange}
+            />
+            <TextField
+              variant="filled"
+              placeholder="Digite aqui"
+              label="Senha"
+              value={password}
+              onChange={onPasswordChange}
+            />
+            <Button disabled={false} />
+        </Container>
       </Container>
   )
 }
