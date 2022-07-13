@@ -32,13 +32,11 @@ module.exports = {
 
     getSoldSeats: async () => {
         let sessions = await sessionDao.getSessions()
-        console.log(sessions)
 
         for (let session of sessions) {
             const seats = await ticketDao.getSeatsBySession(session['Id'])
             session['SoldSeats'] = seats.map(seat => seat['Seat'])
         }
-        console.log(sessions)
 
         return sessions
     }
