@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { Navigate, useNavigate} from 'react-router-dom'
-import { Container, Grid, CircularProgress, Button } from '@material-ui/core'
+import { Container, Grid, CircularProgress, Button, CardContent, CardActions } from '@material-ui/core'
 //import { LoginButton } from 'features/authentication/components/LoginButton'
 //import { AuthenticationTitle } from 'features/authentication/components/AuthenticationTitle/AuthenticationTitle'
 //import { StoreState } from 'redux/state'
@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 //import { maskCpf } from '_utils/masks/taxPayer'
 import { useStyle } from './SignIn.style'
 import { useDispatch, useSelector } from 'react-redux'
-import { TextField } from '@material-ui/core'
+import { TextField, Card, CardHeader } from '@material-ui/core'
 //import { PasswordField } from 'components/PasswordField'
 //import { AuthenticationRoutes } from 'features/authentication/constants/routes'
 //import { ForgotPassword } from 'features/authentication/components/ForgotPassword'
@@ -83,38 +83,37 @@ export const SignIn: React.FC = () => {
   //const isValid = cookies['login-token'] && passwordIsValid;
 
   return (
-      <Container className={style.container}>
-        {validationToken && (
-          <Alert
-            title="Aviso!"
-            message="Sua sessão expirou."
-            severity={'error'}
-          />
-        )}
-        {authState.errorMessage && (
-          <Alert
-            title="Falha na autenticação"
-            message={authState.errorMessage}
-            severity={'error'}
-          />
-        )}
-        <Container className={style.inputs}>
-          <TextField
-              variant="filled"
+      <div className={style.div}>
+        <form className={style.container}>
+        <Card className={style.card}>
+          <CardHeader title={"Ingressofá"} className={style.header}/>
+          <CardContent>
+          <div>
+          <TextField size={'small'}
               placeholder="Digite aqui"
               label="Email"
               value={login}
               onChange={onLoginChange}
             />
             <TextField
-              variant="filled"
               placeholder="Digite aqui"
               label="Senha"
               value={password}
               onChange={onPasswordChange}
             />
-            <Button disabled={false} />
-        </Container>
-      </Container>
+          </div>
+          </CardContent>
+          <CardActions>
+            <Button 
+            variant="contained"
+            size="large"
+            color="secondary"
+            className={style.loginSubmit}
+            onClick={onSubmit}
+            >Acessar</Button>
+          </CardActions>
+        </Card>
+      </form>
+      </div>
   )
 }
