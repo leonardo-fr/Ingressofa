@@ -2,31 +2,23 @@ import { makeStyles } from '@material-ui/core'
 //import loginBackground from '_assets/img/loginBackground.svg'
 //import { colors, theme } from '_config/theme'
 
-const bottomSpacing = 16
-const screenHeight = window.screen.height
-
-const calculateBackgroundHeight = () => {
-  const baseBackgroundImageHeight = 150
-  return screenHeight / 4 + baseBackgroundImageHeight - bottomSpacing
-}
-const calculateContentTopPadding = (backgroundHeightWeight: number) => {
-  const effectiveBackgroundHeight = backgroundHeight * backgroundHeightWeight
-  let result = screenHeight / 2 - effectiveBackgroundHeight + bottomSpacing
-
-  if (result < 0) result = result * -1
-
-  return result
-}
-
-const backgroundHeight = calculateBackgroundHeight()
 
 export const useStyle = makeStyles({
   container: {
-    minHeight: '100vh',
-    //backgroundImage: `url(${loginBackground})`,
+    backgroundImage: `url(https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?cs=srgb&dl=pexels-tima-miroshnichenko-7991579.jpg&fm=jpg)`,
     backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'top',
-    backgroundSize: '900px',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    display: 'flex',
+    height: '1680px',
+    width: '100%',
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  inputs: {
+    alignContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
   },
   header: {
     //color: colors.system.light.primary,

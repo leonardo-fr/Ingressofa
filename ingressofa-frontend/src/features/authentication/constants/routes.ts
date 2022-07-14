@@ -1,7 +1,7 @@
 export enum AuthenticationRoutes {
-    home = '/',
-    signIn = '/signin',
+    signIn = '/',
     signOut = '/signout',
+    home = '/home'
   
     //changePasswordFirstAccess = '/first-access/change-password',
     //confirmPasswordFirstAccess = '/first-access/confirm-password',

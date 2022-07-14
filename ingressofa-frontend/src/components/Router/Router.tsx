@@ -11,7 +11,7 @@ export const Router: React.FC = () => {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path={AuthenticationRoutes.home} element={<SignIn/>} />
+      <Route path={AuthenticationRoutes.signIn} element={<SignIn/>} />
     </Routes>
     </BrowserRouter>
   )

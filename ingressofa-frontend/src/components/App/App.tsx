@@ -15,12 +15,10 @@ export const App: React.FC = () => {
   return (
     <StoreProvider>
       <MuiPickersUtilsProvider utils={DateFnsUtils} locale={datePickerLocale}>
-        <MuiThemeProvider theme={theme}>
             <CssBaseline />
             <Box className={style.app}>
               <Router />
             </Box>
-        </MuiThemeProvider>
       </MuiPickersUtilsProvider>
     </StoreProvider>
   )
