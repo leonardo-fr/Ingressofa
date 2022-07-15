@@ -19,7 +19,7 @@ import { TextField, Card, CardHeader } from '@material-ui/core'
 //import { validateToken } from 'features/authentication/utils'
 //import { OnboardingRoutes } from 'features/onboarding/constants/routes'
 ////import { SaveTaxId } from 'features/authentication/components/SaveTaxId'
-//import { SwitchIOS } from 'components/SwitchIOS'
+import thunk from 'redux-thunk'
 import { CookiesProvider, useCookies } from 'react-cookie'
 import { Alert } from '../../../../components/Alert/Alert'
 import { StoreState } from '../../../../redux/state'
@@ -27,11 +27,11 @@ import { useToken } from '../../../../hook/useToken'
 //import { validateToken } from '../../utils'
 import { LoadingAuthState, SuccessAuthState } from '../../redux/state'
 import { AccountRoutes } from '../../../account/constants/routes'
-import { login,  } from '../../redux/action'
+import { login  } from '../../redux/action'
 
 export const SignIn: React.FC = () => {
   const [password, setPassword] = React.useState('')
-  const [login, setLogin] = React.useState('')
+  const [loginInput, setLogin] = React.useState('')
   const authState = useSelector((state: StoreState) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -68,14 +68,10 @@ export const SignIn: React.FC = () => {
 
   const onSubmit = async (event: any) => {
     event.preventDefault()
-
-    //dispatch(
-      //login(
-        //passwordInput,
-        //switchAlternateState,
-        //cookies['login-token'],
-      //),
-    //)
+    let regex = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
+    if(regex.test(loginInput) && password.length >= 8){
+      
+    }
   }
 
   const passwordIsValid =
@@ -92,7 +88,7 @@ export const SignIn: React.FC = () => {
           <TextField  className={style.inputs}
               placeholder="Digite aqui"
               label="Email"
-              value={login}
+              value={loginInput}
               onChange={onLoginChange}
             />
             <TextField className={style.inputs}

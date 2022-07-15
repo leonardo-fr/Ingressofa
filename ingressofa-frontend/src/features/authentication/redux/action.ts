@@ -17,7 +17,7 @@ import { getBaseRequestData } from '../../../utils/http'
 import { GetState } from '../../../redux/state'
 
 export const login = (
-  cpf: string,
+  email: string,
   password: string,
 ) => {
   return async (dispatch: Dispatch) => {
@@ -28,7 +28,7 @@ export const login = (
 
       const { url, defaultHeaders } = await getBaseRequestData('/Auth/Login')
       const data: LoginRequest = {
-        login: cpf,
+        login: email,
         password,
       }
 
