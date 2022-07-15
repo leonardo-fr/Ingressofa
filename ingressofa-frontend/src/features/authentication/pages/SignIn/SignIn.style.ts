@@ -29,9 +29,18 @@ createStyles({
   loginSubmit: {
     marginTop: theme.spacing(2),
     flexGrow: 1,
+    marginBottom: "20px"
   },
   card: {
     marginTop: '50%',
-    marginBottom: '75%'
+    marginBottom: '75%',
+    opacity: '0.9',
+    borderRadius: '5%',
+    boxShadow: '15px 15px 15px'
+  },
+  inputs: {
+   width: '100%',
+   height: '100%',
+   
   }
 }))

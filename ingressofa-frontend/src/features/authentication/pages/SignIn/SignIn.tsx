@@ -89,13 +89,13 @@ export const SignIn: React.FC = () => {
           <CardHeader title={"Ingressofá"} className={style.header}/>
           <CardContent>
           <div>
-          <TextField size={'small'}
+          <TextField  className={style.inputs}
               placeholder="Digite aqui"
               label="Email"
               value={login}
               onChange={onLoginChange}
             />
-            <TextField
+            <TextField className={style.inputs}
               placeholder="Digite aqui"
               label="Senha"
               value={password}
